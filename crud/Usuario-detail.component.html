@@ -1,0 +1,36 @@
+<div class="card mt-5">
+    <div class="card-header">
+        {{this.isNew ? "Register Usuario" : "Update Usuario"}}
+    </div>
+    <div class="card-body">
+        <form (ngSubmit)="submitUsuario(forma)" #forma="ngForm" class="row g-3">
+<div class="col-md-6">
+<label for="label-id"  class="form-label">id:</label>"
+<input #inputid="ngModel"  type="text" name="id" [ngClass]="{'is-invalid': inputid.touched && inputid.hasError('required') }" [(ngModel)]="usuario.id" class="form-control" id="id" value="" required>
+<div class="invalid-feedback">
+                Field required
+            </div>
+        </div>
+<div class="col-md-6">
+<label for="label-nombre"  class="form-label">nombre:</label>"
+<input #inputnombre="ngModel"  type="text" name="nombre" [ngClass]="{'is-invalid': inputnombre.touched && inputnombre.hasError('required') }" [(ngModel)]="usuario.nombre" class="form-control" id="nombre" value="" required>
+<div class="invalid-feedback">
+                Field required
+            </div>
+        </div>
+<div class="col-md-6">
+<label for="label-cotrasena"  class="form-label">cotrasena:</label>"
+<input #inputcotrasena="ngModel"  type="text" name="cotrasena" [ngClass]="{'is-invalid': inputcotrasena.touched && inputcotrasena.hasError('required') }" [(ngModel)]="usuario.cotrasena" class="form-control" id="cotrasena" value="" required>
+<div class="invalid-feedback">
+                Field required
+            </div>
+        </div>
+<div class="col-12 text-center">
+            <button class=" btn btn-primary" type="submit" [disabled]="forma.invalid">{{this.isNew ? "Register" : "Update"}}</button>
+            <button style="margin-left: 10px;" class=" btn btn-danger" type="button" (click)="limpiarForm(forma)">Clear</button>
+            <button *ngIf="!this.isNew" style="margin-left: 10px;" class=" btn btn-danger" type="button" (click)="emitChange.emit()">Cancel</button>
+          </div>
+      </form>
+    </div>
+</div>
+<router-outlet></router-outlet> 

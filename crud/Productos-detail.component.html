@@ -1,0 +1,43 @@
+<div class="card mt-5">
+    <div class="card-header">
+        {{this.isNew ? "Register Productos" : "Update Productos"}}
+    </div>
+    <div class="card-body">
+        <form (ngSubmit)="submitProductos(forma)" #forma="ngForm" class="row g-3">
+<div class="col-md-6">
+<label for="label-id"  class="form-label">id:</label>"
+<input #inputid="ngModel"  type="text" name="id" [ngClass]="{'is-invalid': inputid.touched && inputid.hasError('required') }" [(ngModel)]="productos.id" class="form-control" id="id" value="" required>
+<div class="invalid-feedback">
+                Field required
+            </div>
+        </div>
+<div class="col-md-6">
+<label for="label-nombre_del_producto"  class="form-label">nombre_del_producto:</label>"
+<input #inputnombre_del_producto="ngModel"  type="text" name="nombre_del_producto" [ngClass]="{'is-invalid': inputnombre_del_producto.touched && inputnombre_del_producto.hasError('required') }" [(ngModel)]="productos.nombre_del_producto" class="form-control" id="nombre_del_producto" value="" required>
+<div class="invalid-feedback">
+                Field required
+            </div>
+        </div>
+<div class="col-md-6">
+<label for="label-descripcion_product"  class="form-label">descripcion_product:</label>"
+<input #inputdescripcion_product="ngModel"  type="text" name="descripcion_product" [ngClass]="{'is-invalid': inputdescripcion_product.touched && inputdescripcion_product.hasError('required') }" [(ngModel)]="productos.descripcion_product" class="form-control" id="descripcion_product" value="" required>
+<div class="invalid-feedback">
+                Field required
+            </div>
+        </div>
+<div class="col-md-6">
+<label for="label-precio"  class="form-label">precio:</label>"
+<input #inputprecio="ngModel"  type="text" name="precio" [ngClass]="{'is-invalid': inputprecio.touched && inputprecio.hasError('required') }" [(ngModel)]="productos.precio" class="form-control" id="precio" value="" required>
+<div class="invalid-feedback">
+                Field required
+            </div>
+        </div>
+<div class="col-12 text-center">
+            <button class=" btn btn-primary" type="submit" [disabled]="forma.invalid">{{this.isNew ? "Register" : "Update"}}</button>
+            <button style="margin-left: 10px;" class=" btn btn-danger" type="button" (click)="limpiarForm(forma)">Clear</button>
+            <button *ngIf="!this.isNew" style="margin-left: 10px;" class=" btn btn-danger" type="button" (click)="emitChange.emit()">Cancel</button>
+          </div>
+      </form>
+    </div>
+</div>
+<router-outlet></router-outlet> 
