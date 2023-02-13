@@ -21,10 +21,11 @@ export class UsuarioService {
   }
 
   postUsuario(usuario: UsuarioModel) {
-    
+    usuario.estatusid = Number(usuario.estatusid);
+    usuario.perfilid = Number(usuario.perfilid);
     return lastValueFrom(this.http.post(`${this.pruebasUrl}`, usuario));
   }
-  putUsuario(usuario: UsuarioModel, id: number) { 
+  putUsuario(usuario: UsuarioModel, id: number) {
     return lastValueFrom(this.http.put(`${this.pruebasUrl}`, usuario));
   }
 
